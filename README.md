@@ -58,6 +58,8 @@ Podemos executar os testes com o comando
 ```sh
 mix test
 ```
+Também é possivel executar testes pelo Insomnia, importando a coleção de request existente na  
+rais do projeto ``request_collection_test_payfy.json``
 
 <br>
 <br>
