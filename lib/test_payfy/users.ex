@@ -11,7 +11,7 @@ defmodule TestPayfy.Users do
   def get_user(id) do
     User
     |> TestPayfy.Repo.get(id)
-    |> Result.from_maybe(:not_found)
+    |> Result.from_maybe(%{user_id: ["does not exist"]})
   end
 
   @spec create_user(map()) :: {:ok, %User{}} | {:error, %Ecto.Changeset{}}

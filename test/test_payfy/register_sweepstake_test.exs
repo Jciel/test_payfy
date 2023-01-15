@@ -25,7 +25,7 @@ defmodule TestPayfy.RegisterSweepstakeTest do
       assert {:ok, ^register_sweepstake} =
                TestPayfy.RegistersSweepstake.get_register_sweepstake(register_sweepstake.id)
 
-      assert {:error, :not_found} =
+      assert {:error, %{register_sweepstake_id: ["does not exist"]}} =
                TestPayfy.RegistersSweepstake.get_register_sweepstake(Ecto.UUID.generate())
     end
 
@@ -55,7 +55,7 @@ defmodule TestPayfy.RegisterSweepstakeTest do
                  sweepstake_id: sweepstake.id
                })
 
-      assert {:error, :not_found} =
+      assert {:error, %{sweepstake_id: ["does not exist"]}} =
                TestPayfy.RegistersSweepstake.create_register_sweepstake(%{
                  user_id: user.id,
                  sweepstake_id: Ecto.UUID.generate()
@@ -67,7 +67,7 @@ defmodule TestPayfy.RegisterSweepstakeTest do
                  sweepstake_id: sweepstake.id
                })
 
-      assert {:error, :not_found} =
+      assert {:error, %{sweepstake_id: ["does not exist"]}} =
                TestPayfy.RegistersSweepstake.create_register_sweepstake(%{
                  user_id: Ecto.UUID.generate(),
                  sweepstake_id: Ecto.UUID.generate()

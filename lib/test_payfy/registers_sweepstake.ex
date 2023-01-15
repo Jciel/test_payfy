@@ -10,7 +10,7 @@ defmodule TestPayfy.RegistersSweepstake do
   def get_register_sweepstake(id) do
     RegisterSweepstake
     |> TestPayfy.Repo.get(id)
-    |> Result.from_maybe(:not_found)
+    |> Result.from_maybe(%{register_sweepstake_id: ["does not exist"]})
   end
 
   @spec create_register_sweepstake(map()) ::

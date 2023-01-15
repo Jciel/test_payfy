@@ -51,17 +51,7 @@ Caso necessário podemos executar o seed com o comando
 mix run priv/repo/seeds.exs
 ```
 
-<br>
 
-### Teste
-Podemos executar os testes com o comando  
-```sh
-mix test
-```
-Também é possivel executar testes pelo Insomnia, importando a coleção de request existente na  
-rais do projeto ``request_collection_test_payfy.json``
-
-<br>
 <br>
 
 Após podemos iniciar o Phoenix em execução local com o seguinte comando
@@ -69,6 +59,17 @@ Após podemos iniciar o Phoenix em execução local com o seguinte comando
 mix phx.server
 ```
 Assim a API estará pronta para execução
+
+<br>
+
+### Teste
+Podemos executar os testes com o comando  
+```sh
+mix test
+```
+Também é possivel executar testes pelo [Insomnia](https://insomnia.rest), importando a coleção de request existente na  
+raiz do projeto ``request_collection_test_payfy.json``
+
 
 <br>
 <br>
@@ -82,6 +83,7 @@ Assim a API estará pronta para execução
 <summary> POST "/users"</summary>
 
 <summary>Input</summary>
+Create a User with valid params  
 
 ```json
 {
@@ -103,6 +105,7 @@ Assim a API estará pronta para execução
 <br>
 
 <summary>Input</summary>
+Try create a User with invalid email  
 
 ```json
 {
@@ -126,6 +129,7 @@ Assim a API estará pronta para execução
 <br>
 
 <summary>Input</summary>
+Try create a User without name  
 
 ```json
 {
@@ -148,6 +152,7 @@ Assim a API estará pronta para execução
 <br>
 
 <summary>Input</summary>
+Try create a User without email
 
 ```json
 {
@@ -177,7 +182,7 @@ Assim a API estará pronta para execução
 <summary>POST "/sweepstakes"</summary>
 
 <summary>Input</summary>
-Post with all valid params
+Create a Sweepstake with valid params  
 
 ```json
 {
@@ -200,13 +205,13 @@ Post with all valid params
 <br>
 
 <summary>Input</summary>
-Post with a invalid user_id
+Try create a Sweepstake with a invalid user_id reference
 
 ```json
 {
   "name" : "namesweepstake",
   "draw_date" : 1701388800000,
-	"user_id" : "8ae0f214-c307-41d3-8787-a2d2a7568ce8"
+  "user_id" : "8ae0f214-c307-41d3-8787-a2d2a7568ce8"
 }
 ```
 <summary>Response</summary>
@@ -225,12 +230,12 @@ Post with a invalid user_id
 <br>
 
 <summary>Input</summary>
-Post without a draw date
+Try create a Sweepstake without draw date  
 
 ```json
 {
   "name" : "namesweepstake",
-	"user_id" : null
+  "user_id" : null
 }
 ```
 <summary>Response</summary>
@@ -238,18 +243,18 @@ Post without a draw date
 ```json
 422 Unprocessable Entity
 {
-	"errors": {
-		"draw_date": [
-			"can't be blank"
-		]
-	}
+"errors": {
+	"draw_date": [
+		"can't be blank"
+	]
+}
 }
 ```
 
 <br>
 
 <summary>Input</summary>
-Post without a name
+Try create a Sweepstake without name
 
 ```json
 {
@@ -278,7 +283,7 @@ Post without a name
 <summary> POST "/register-sweepstakes"</summary>
 
 <summary>Input</summary>
-Post with all valid params
+Create a register with valid params (from seed)
 
 ```json
 {
@@ -299,7 +304,7 @@ Post with all valid params
 <br>
 
 <summary>Input</summary>
-Try create a register with valid params sweepstake outside deadline  
+Try create a register with valid params sweepstake outside deadline (from seed)  
 
 ```json
 {
@@ -324,7 +329,7 @@ Try create a register with valid params sweepstake outside deadline
 <br>
 
 <summary>Input</summary>
-Try create a register with valid params in same sweepstake  
+Try create a register with valid params in same sweepstake (from seed)
 
 ```json
 {
@@ -349,7 +354,7 @@ Try create a register with valid params in same sweepstake
 <br>
 
 <summary>Input</summary>
-Try create a register with invalid user_id  
+Try create a register with invalid user_id
 
 ```json
 {

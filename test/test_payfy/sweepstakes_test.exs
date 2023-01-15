@@ -18,7 +18,8 @@ defmodule TestPayfy.SweepstakesTest do
 
       assert {:ok, ^sweepstake} = TestPayfy.Sweepstakes.get_sweepstake(sweepstake.id)
 
-      assert {:error, :not_found} = TestPayfy.Sweepstakes.get_sweepstake(Ecto.UUID.generate())
+      assert {:error, %{sweepstake_id: ["does not exist"]}} =
+               TestPayfy.Sweepstakes.get_sweepstake(Ecto.UUID.generate())
     end
 
     test "create_sweepstake/1 Create a Sweepstake by attributes with a user winner" do

@@ -11,7 +11,8 @@ defmodule TestPayfy.UsersTest do
 
       assert {:ok, ^user} = TestPayfy.Users.get_user(user.id)
 
-      assert {:error, :not_found} = TestPayfy.Users.get_user(Ecto.UUID.generate())
+      assert {:error, %{user_id: ["does not exist"]}} =
+               TestPayfy.Users.get_user(Ecto.UUID.generate())
     end
 
     test "create_user/1 Create a User by attributes" do

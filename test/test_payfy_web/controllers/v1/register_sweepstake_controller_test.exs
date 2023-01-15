@@ -74,7 +74,7 @@ defmodule TestPayfyWeb.V1.RegisterSweepstakeControllerTest do
           sweepstake_id: Ecto.UUID.generate()
         })
 
-      assert json_response(conn, :unprocessable_entity) == %{
+      assert json_response(conn, :not_found) == %{
                "errors" => %{
                  "sweepstake_id" => [
                    "does not exist"
@@ -106,7 +106,7 @@ defmodule TestPayfyWeb.V1.RegisterSweepstakeControllerTest do
           sweepstake_id: sweepstake.id
         })
 
-      assert json_response(conn, :unprocessable_entity) == %{
+      assert json_response(conn, :not_found) == %{
                "errors" => %{
                  "sweepstake_id" => [
                    "Registration outside the draw deadline"

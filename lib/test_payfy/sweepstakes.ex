@@ -11,7 +11,7 @@ defmodule TestPayfy.Sweepstakes do
   def get_sweepstake(id) do
     Sweepstake
     |> TestPayfy.Repo.get(id)
-    |> Result.from_maybe(:not_found)
+    |> Result.from_maybe(%{sweepstake_id: ["does not exist"]})
   end
 
   @spec create_sweepstake(map()) :: {:ok, %Sweepstake{}} | {:error, %Ecto.Changeset{}}
